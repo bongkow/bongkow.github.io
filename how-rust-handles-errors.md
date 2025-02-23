@@ -1,17 +1,17 @@
 # Error Handling in Rust: A Practical Guide
 
-Rust provides a robust and safe way to handle errors, making it a powerful language for building reliable applications. Unlike many other languages that rely heavily on exceptions, Rust uses the Result and Option types to handle errors in a more predictable and explicit manner.
+Rust provides a robust and safe way to handle errors, making it a powerful language for building reliable applications. Unlike many other languages that rely heavily on exceptions, Rust uses the `Result` and `Option` types to handle errors in a more predictable and explicit manner.
 
-The Result Type
+## The `Result` Type
 
-The Result<T, E> type is used for functions that can return an error. It has two variants:
+The `Result<T, E>` type is used for functions that can return an error. It has two variants:
 
-Ok(T): Represents a successful computation returning a value of type T.
+- `Ok(T)`: Represents a successful computation returning a value of type `T`.
+- `Err(E)`: Represents an error, returning an error type `E`.
 
-Err(E): Represents an error, returning an error type E.
+### Example:
 
-Example:
-
+```rust
 fn divide(a: f64, b: f64) -> Result<f64, String> {
     if b == 0.0 {
         Err("Division by zero".to_string())
@@ -26,25 +26,32 @@ fn main() {
         Err(e) => println!("Error: {}", e),
     }
 }
+```
 
-Return Value:
+### Return Value:
 
+```rust
 divide(10.0, 2.0) → Ok(5.0)
+```
 
-Output: Result: 5.0
+**Output:**
 
-If b == 0.0, it would return Err("Division by zero") instead.
+```
+Result: 5.0
+```
 
-The Option Type
+If `b == 0.0`, it would return `Err("Division by zero")` instead.
 
-The Option<T> type is used when a value may or may not be present.
+## The `Option` Type
 
-Some(T): Contains a value of type T.
+The `Option<T>` type is used when a value may or may not be present.
 
-None: Represents an absence of a value.
+- `Some(T)`: Contains a value of type `T`.
+- `None`: Represents an absence of a value.
 
-Example:
+### Example:
 
+```rust
 fn find_value(arr: &[i32], target: i32) -> Option<usize> {
     arr.iter().position(|&x| x == target)
 }
@@ -56,21 +63,29 @@ fn main() {
         None => println!("Not found"),
     }
 }
+```
 
-Return Value:
+### Return Value:
 
+```rust
 find_value(&[1, 2, 3, 4, 5], 3) → Some(2)
+```
 
-Output: Found at index: 2
+**Output:**
 
-If the target number does not exist in the array, it would return None.
+```
+Found at index: 2
+```
 
-Error Propagation with ?
+If the target number does not exist in the array, it would return `None`.
 
-The ? operator allows propagating errors in functions that return Result or Option.
+## Error Propagation with `?`
 
-Example:
+The `?` operator allows propagating errors in functions that return `Result` or `Option`.
 
+### Example:
+
+```rust
 use std::fs::File;
 use std::io::{self, Read};
 
@@ -87,21 +102,27 @@ fn main() {
         Err(e) => println!("Failed to read file: {}", e),
     }
 }
+```
 
-Return Value:
+### Return Value:
 
-If example.txt exists and contains "Hello, Rust!", the function returns Ok("Hello, Rust!").
+If `example.txt` exists and contains "Hello, Rust!", the function returns `Ok("Hello, Rust!")`.
 
-If the file does not exist, it returns an Err with an io::Error.
+If the file does not exist, it returns an `Err` with an `io::Error`.
 
-Possible error message: Failed to read file: No such file or directory (os error 2)
+**Possible error message:**
 
-Custom Error Types
+```
+Failed to read file: No such file or directory (os error 2)
+```
 
-For complex applications, defining custom error types using thiserror or anyhow can improve error handling.
+## Custom Error Types
 
-Example:
+For complex applications, defining custom error types using `thiserror` or `anyhow` can improve error handling.
 
+### Example:
+
+```rust
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -121,13 +142,21 @@ fn main() {
         println!("Error occurred: {}", e);
     }
 }
+```
 
-Return Value:
+### Return Value:
 
+```rust
 example_function() → Err(MyError::InvalidInput("Bad data".to_string()))
+```
 
-Output: Error occurred: Invalid input: Bad data
+**Output:**
 
-Conclusion
+```
+Error occurred: Invalid input: Bad data
+```
 
-Rust’s approach to error handling ensures safety and clarity. By using Result, Option, the ? operator, and custom error types, developers can write robust and maintainable code. Understanding these patterns is essential for building reliable Rust applications.
+## Conclusion
+
+Rust’s approach to error handling ensures safety and clarity. By using `Result`, `Option`, the `?` operator, and custom error types, developers can write robust and maintainable code. Understanding these patterns is essential for building reliable Rust applications.
+
