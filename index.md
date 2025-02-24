@@ -4,3 +4,4 @@
 * [Ethereum signature explained](https://bongkow.github.io/what-is-ethereum-signature)
 * [How rust handles errors](https://bongkow.github.io/how-rust-handles-errors)
 * [How to handle version in rust](https://bongkow.github.io/how-to-manage-rust-by-rustup)
+* [AWS S3 latest:S3 Express One Zone](https://bongkow.github.io/S3-Express-One-Zone)
