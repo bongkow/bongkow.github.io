@@ -1,4 +1,4 @@
-**Palantir Technologies Inc. Overview (As of Today)**
+**Palantir Technologies Inc. Overview (As of Feb 25, 2025)**
 
 **Company Overview:**
 Palantir Technologies Inc. is a public American software company that specializes in big data analytics. Founded in 2003, Palantir provides data integration, analysis, and security solutions to government agencies, financial institutions, healthcare providers, and large corporations. The company is known for its flagship platforms:
